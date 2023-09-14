@@ -2,15 +2,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 // Defining helper functions
 int get_int(char *);
+void intmergesort(int *arr);
+void floatmergesort(float *arr);
 
 // Starting main function
 int main(int args, char **argc)
 {
     // Declaring necessary variables
-    int *array, i, j, arrlen = 0, choice = 0; 
+    int *array, i, j, arrlen = 0, choice = 0;
 
     // Checking if the user provided the array in command line argument
     if (args > 1)
@@ -57,11 +60,12 @@ int main(int args, char **argc)
         // Else if the user chooses 2
         else if (choice == 2)
         {
-            arrlen = 10;
+            arrlen = 10; // Setting the length of the array
             array = (int *)malloc(sizeof(int) * arrlen);
+            srand(time(NULL)); // Seeding the rand function to have different random numbers each time
             for (i = 0; i < arrlen; i++)
             {
-                array[i] = random() % 30;
+                array[i] = rand() % 30; // Using our rand function and getting the remainder when divided by 30 so the max no. we get is 29
             }
         }
 
@@ -72,15 +76,16 @@ int main(int args, char **argc)
             return 0;
         }
 
-        // Else there must be an unexpected unknown error
+        // Else there must be an unexpected unknown error and returning the main function with 2
         else
         {
             printf("Unknown error! contact the developer!!\n");
-            return 1;
+            return 2;
         }
     }
 
     // Using our sort function we defined which will sort the array using recursion
+    intmergesort(array);
 
     // Printing out the resultant array 
     printf("Resultant array:\n");
@@ -112,4 +117,16 @@ int get_int(char *str)
     printf("%s", str);
     scanf("%i", &num);
     return num;
+}
+
+// Our helper function that does the main merge sort
+void intmergesort(int *arr)
+{
+    return;
+}
+
+// Our helper function that does the main merge sort
+void floatmergesort(float *arr)
+{
+    return;
 }
