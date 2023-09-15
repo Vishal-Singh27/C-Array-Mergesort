@@ -47,7 +47,7 @@ int main(int args, char **argc)
             // First getting the input of the array size
             do
             {
-                arrlen = get_int("Enter how many numbers you wanna sort(Enter 0 to exit the program): ");
+                arrlen = get_int("\nEnter how many numbers you wanna sort(Enter 0 to exit the program): ");
                 if (arrlen < 0)
                 {
                     printf("\nThe no. of you wanna sort must be greater than 0! (Enter 0 to exit the program)\n\n");
@@ -65,6 +65,7 @@ int main(int args, char **argc)
             array = (int *)malloc(sizeof(int) * arrlen);
 
             // Getting input of the array
+            printf("Enter the numbers now: \n");
             for (i = 0; i < arrlen; i++)
             {
                 array[i] = get_int("Enter a number: ");
