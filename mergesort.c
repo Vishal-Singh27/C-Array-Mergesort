@@ -90,10 +90,11 @@ int main(int args, char **argc)
             return 0;
         }
 
-        // Else there must be an unexpected unknown error and returning the main function with 2
+        // Else there must be an unexpected unknown error and exits with 2
         else
         {
             printf("Unknown error! contact the developer!!\n");
+            printf("Exiting program...\n");
             return 2;
         }
     }
