@@ -119,13 +119,13 @@ int get_int(char *str)
     return num;
 }
 
-// Our helper function that does the main merge sort
+// Our helper function that does the main merge sort on integers
 void intmergesort(int *arr)
 {
     return;
 }
 
-// Our helper function that does the main merge sort
+// Our helper function that does the main merge sort on float numbers
 void floatmergesort(float *arr)
 {
     return;
