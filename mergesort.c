@@ -45,7 +45,21 @@ int main(int args, char **argc)
         if (choice == 1)
         {
             // First getting the input of the array size
-            arrlen = get_int("Enter how many numbers you wanna sort: ");
+            do
+            {
+                arrlen = get_int("Enter how many numbers you wanna sort(Enter 0 to exit the program): ");
+                if (arrlen < 0)
+                {
+                    printf("\nThe no. of you wanna sort must be greater than 0! (Enter 0 to exit the program)\n\n");
+                }
+
+                else if (arrlen == 0)
+                {
+                    printf("Exiting program...\n");
+                    return 0;
+                }
+            }
+            while (arrlen < 1);
 
             // Now allocating the size for our array
             array = (int *)malloc(sizeof(int) * arrlen);
@@ -88,7 +102,7 @@ int main(int args, char **argc)
     intmergesort(array);
 
     // Printing out the resultant array 
-    printf("Resultant array:\n");
+    printf("Sorted array:\n");
     for (int i = 0; i < arrlen; i++)
     {
         printf("%i\n", array[i]);
