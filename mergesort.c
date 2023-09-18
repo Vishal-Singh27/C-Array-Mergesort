@@ -6,8 +6,9 @@
 
 // Defining helper functions
 int get_int(char *);
-void intmergesort(int *arr);
-void floatmergesort(float *arr);
+void intmergesort(int *arr, int ub, int lb);
+void floatmergesort(float *arr, int ub, int lb);
+void merge(int *arr,int firstub, int firstlb, int secondub, int secondlb);
 
 // Starting main function
 int main(int args, char **argc)
@@ -41,7 +42,7 @@ int main(int args, char **argc)
         } 
         while (choice != 1 && choice != 2 && choice != 3);
     
-        // If user chooses hardcoded array
+        // If user chooses to get input the numbers manually
         if (choice == 1)
         {
             // First getting the input of the array size
@@ -101,7 +102,7 @@ int main(int args, char **argc)
     }
 
     // Using our sort function we defined which will sort the array using recursion
-    intmergesort(array);
+    intmergesort(array, 0, arrlen - 1);
 
     // Printing out the resultant array 
     printf("Sorted array:\n");
@@ -136,13 +137,49 @@ int get_int(char *str)
 }
 
 // Our helper function that does the main merge sort on integers
-void intmergesort(int *arr)
+void intmergesort(int *arr, int ub, int lb)
 {
-    return;
+    // Declaring necessary variables
+    int mp, tmp;
+
+    if ((lb - ub) + 1 == 2)
+    {
+        if (arr[ub] > arr[lb])
+        {
+            tmp = arr[lb];
+            arr[lb] = arr[ub];
+            arr[ub] = tmp;
+            return;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    // Calculating the middle point
+    mp = (int)round((ub + lb) / 2.0);
+
+    // Sorting out the left side of the array
+    intmergesort(arr, ub, mp - 1);
+
+    // Sorting out the right side of the array
+    intmergesort(arr, mp, lb);
+
+    // Merging them now
+    merge(arr, ub, mp - 1, mp, lb);
+}
+
+void merge(int *arr,int firstub, int firstlb, int secondub, int secondlb)
+{
+    // Declaring necessary libraries
+    int i, j, k, max = arr[firstub];
+
+    // Merging the part of the arrays
 }
 
 // Our helper function that does the main merge sort on float numbers
-void floatmergesort(float *arr)
+void floatmergesort(float *arr, int ub, int lb)
 {
     return;
 }
